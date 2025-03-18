@@ -1,0 +1,23 @@
+.bg-333 {
+  background-color: #333;
+}
+
+.scale {
+  transition: 0.2s;
+}
+
+.scale:hover {
+  scale: 1.1;
+}
+
+.scale:active {
+  scale: 1;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: white;
+}
+
+.form-control:hover, .form-control:active, .form-control:focus{
+  box-shadow: none;
+}
