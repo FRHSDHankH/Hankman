@@ -21,3 +21,24 @@
 .form-control:hover, .form-control:active, .form-control:focus{
   box-shadow: none;
 }
+
+.Easy {
+  background-color: transparent;
+  color: forestgreen;
+  border: .2vw double forestgreen;
+  border-radius: 2vw;
+}
+
+.Medium {
+  background-color: transparent;
+  color: goldenrod;
+  border: .2vw double goldenrod;
+  border-radius: 2vw;
+}
+
+.Hard {
+  background-color: transparent;
+  color: red;
+  border: .2vw double red;
+  border-radius: 2vw;
+}

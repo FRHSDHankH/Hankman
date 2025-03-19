@@ -24,20 +24,20 @@
       <div class="container text-center">
         <p class="display-1 my-2 text-white fw-bold">Hankman</p>
 
-        <div id="difficultySelection"> <!-- ! REMOVE d-none -->
+        <div id="difficultySelection">
           <p class="display-5 my-2 text-white">Select Difficulty</p>
-          <button class="btn btn-transparent border border-1 border-success difficulty-btn scale text-success m-3" onclick="startGame('easy')">Easy</button>
-          <button class="btn btn-transparent border border-1 border-warning difficulty-btn scale text-warning m-3" onclick="startGame('medium')">Medium</button>
-          <button class="btn btn-transparent border border-1 border-danger difficulty-btn scale text-danger m-3" onclick="startGame('hard')">Hard</button>
+          <button class="btn btn-transparent border border-1 border-success difficulty-btn scale text-success m-3" onclick="startGame('Easy')">Easy</button>
+          <button class="btn btn-transparent border border-1 border-warning difficulty-btn scale text-warning m-3" onclick="startGame('Medium')">Medium</button>
+          <button class="btn btn-transparent border border-1 border-danger difficulty-btn scale text-danger m-3" onclick="startGame('Hard')">Hard</button>
         </div>
 
-        <div id="difficultyBox" class="my-2 p-3 fw-bold"> <!-- ! ADD d-none -->
+        <div id="difficultyBox" class="my-2 p-3 fw-bold d-none fs-4">
         </div>
 
-        <div id="gameArea" class="my-2"> <!-- ! ADD d-none -->
+        <div id="gameArea" class="my-2 d-none">
           <p id="wordDisplay" class="display-4 my-2 text-white">_ _ _ _ _</p>
           <div class="my-2 d-flex align-items-center justify-content-center">
-            <input type="text" id="letterInput" maxlength="1" placeholder="Enter a Letter" class="mx-2 form-control d-inline-block border border-1 border-white bg-transparent text-white w-auto">
+            <input type="text" id="letterInput" maxlength="1" placeholder="Enter a Letter" class="text-center mx-2 form-control d-inline-block border border-1 border-white bg-transparent text-white w-auto">
             <button id="guessBtn" class="mx-2 btn btn-transparent border border-1 border-warning scale text-warning" onclick="guessLetter()">Guess</button>
           </div>
           <p id="wrongLetters" class="fw-bold text-danger my-2">Wrong Guesses: </p>
