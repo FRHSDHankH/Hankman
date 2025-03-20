@@ -24,15 +24,15 @@
 
 .Easy {
   background-color: transparent;
-  color: forestgreen;
-  border: .2vw double forestgreen;
+  color: lime;
+  border: .2vw double lime;
   border-radius: 2vw;
 }
 
 .Medium {
   background-color: transparent;
-  color: goldenrod;
-  border: .2vw double goldenrod;
+  color: yellow;
+  border: .2vw double yellow;
   border-radius: 2vw;
 }
 
@@ -41,4 +41,9 @@
   color: red;
   border: .2vw double red;
   border-radius: 2vw;
+}
+
+.size {
+  height: 90vh;
+  width: 100vw;
 }
