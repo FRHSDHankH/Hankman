@@ -99,3 +99,28 @@ function guessLetter() {
   inputField.value = '' //& Clear input field
   document.getElementById('letterInput').focus() //& Refocus input field for next guess
 }
+
+function updateWrongGuess(guessedLetter) {
+  wrongGuesses++
+  document.getElementById('wrongLetters').textContent += `${guessedLetter}`
+  document.getElementById('imgChange').src = `imgs/image${6-wrongGuesses}.jpg`
+
+  if (wrongGuesses === maxMistakes) {
+    endGame(false)
+  }
+}
+
+function updateCorrectGuess(guessedLetter) {
+  let newDisplayedWord = ''
+
+  for (let i = 0; i < selectedWord.length; i++) {
+    if (selectedWord[i] === guessedLetter) {
+      newDisplayedWord += guessedLetter //& Replace underscore with correct letter
+    } else {
+      newDisplayedWord += displayedWord[i] //& Keep existing correct letters
+    }
+  }
+
+  displayedWord = newDisplayedWord
+  updateUI()
+}
