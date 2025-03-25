@@ -130,10 +130,18 @@ function updateCorrectGuess(guessedLetter) {
 }
 
 function endGame(won) {
+  let endText = document.getElementById('endText')
+  let endContainer = document.getElementById('endContainer')
+  document.getElementById('difficultyBox').classList.add('d-none')
+  document.getElementById('gameArea').classList.add('d-none')
+  document.getElementById('title').classList.add('d-none')
+
   if (won === true) {
-    setTimeout(() => alert(`Congratulations you won! The word was "${selectedWord}".`), 100)
+    setTimeout(() => endText.textContent = `Congratulations you won! The word was "${selectedWord}".`, 100)
+    setTimeout(() => endContainer.classList.remove('d-none'), 100)
   } else {
-    setTimeout(() => alert(`Sorry you died... the word was "${selectedWord}" you idiot!`), 100)
+    setTimeout(() => endText.textContent = `Sorry you died... the word was "${selectedWord}" you idiot!`, 100)
+    setTimeout(() => endContainer.classList.remove('d-none'), 100)
   }
 }
 
