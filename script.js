@@ -123,4 +123,28 @@ function updateCorrectGuess(guessedLetter) {
 
   displayedWord = newDisplayedWord
   updateUI()
+
+  if (!displayedWord.includes('_')) {
+    endGame(true)
+  }
+}
+
+function endGame(won) {
+  if (won === true) {
+    setTimeout(() => alert(`Congratulations you won! The word was "${selectedWord}".`), 100)
+  } else {
+    setTimeout(() => alert(`Sorry you died... the word was "${selectedWord}" you idiot!`), 100)
+  }
+}
+
+//& Add an event listener to task input to check if enter key is pressed
+document.getElementById("letterInput").addEventListener("keydown", (event) => {
+  //& Checks if enter key is pressed
+  if (event.key === "Enter") {
+    guessLetter()
+  }
+});
+
+function restartGame() {
+  location.reload()
 }

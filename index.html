@@ -23,30 +23,57 @@
     <main class="d-flex align-items-center justify-content-center size">
       <div class="container-fluid d-block">
         <div class="container text-center">
-          <p class="display-1 my-2 text-white fw-bold">Hankman</p>
-  
-          <div id="difficultySelection">
-            <p class="display-5 my-2 text-white">Select Difficulty</p>
-            <button class="btn btn-transparent border border-1 border-success difficulty-btn scale text-success m-3" onclick="startGame('Easy')">Easy</button>
-            <button class="btn btn-transparent border border-1 border-warning difficulty-btn scale text-warning m-3" onclick="startGame('Medium')">Medium</button>
-            <button class="btn btn-transparent border border-1 border-danger difficulty-btn scale text-danger m-3" onclick="startGame('Hard')">Hard</button>
-          </div>
-  
-          <div id="difficultyBox" class="my-2 p-3 fw-bold d-none fs-4">
-          </div>
-  
-          <div id="gameArea" class="my-2 d-none">
-            <p id="wordDisplay" class="display-4 my-2 text-white"></p>
-            <div class="my-2 d-flex align-items-center justify-content-center">
-              <input type="text" id="letterInput" maxlength="1" placeholder="Enter a Letter" class="text-center mx-2 form-control d-inline-block border border-1 border-white bg-transparent text-white w-auto">
-              <button id="guessBtn" class="mx-2 btn btn-transparent border border-1 border-warning scale text-warning" onclick="guessLetter()">Guess</button>
-            </div>
-            <p id="wrongLetters" class="fw-bold text-danger my-2">Wrong Guesses: </p>
-            <img src="imgs/image6.jpg" id="imgChange" class="stickiesImg my-2">
-            <div class="my-2">
-              <button id="restartBtn" class="btn btn-transparent border border-1 border-danger text-danger scale" onclick="restartGame()">Restart Game</button>
+          <div class="row">
+            <div class="col-12">
+              <p class="display-1 my-2 text-white fw-bold">Hankman</p>
             </div>
           </div>
+          <div class="container">
+            <div id="difficultySelection">
+              <div class="row">
+                <div class="col-12">
+                  <p class="display-5 my-2 text-white">Select Difficulty:</p>
+                </div>
+              </div>
+              <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-lg-2 col-sm-12">
+                  <button class="btn btn-transparent border border-1 border-success difficulty-btn scale text-success m-3" onclick="startGame('Easy')">Easy</button>
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <button class="btn btn-transparent border border-1 border-warning difficulty-btn scale text-warning m-3" onclick="startGame('Medium')">Medium</button>
+                </div>
+                <div class="col-lg-2 col-sm-12">
+                  <button class="btn btn-transparent border border-1 border-danger difficulty-btn scale text-danger m-3" onclick="startGame('Hard')">Hard</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+              <div id="difficultyBox" class="my-2 p-3 fw-bold d-none fs-4"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div id="gameArea" class="my-2 d-none">
+                <p id="wordDisplay" class="display-4 my-2 text-white"></p>
+                <div class="my-2 row">
+                  <input type="text" id="letterInput" maxlength="1" placeholder="Enter a Letter" class="text-center mx-2 form-control d-inline-block border border-1 border-white bg-transparent text-white w-auto">
+                  <button id="guessBtn" class="mx-2 btn btn-transparent border border-1 border-warning scale text-warning" onclick="guessLetter()">Guess</button>
+                </div>
+                <p id="wrongLetters" class="fw-bold text-danger my-2">Wrong Guesses: </p>
+                <img src="imgs/image6.jpg" id="imgChange" class="stickiesImg my-2">
+                <div class="my-2">
+                  <button id="restartBtn" class="btn btn-transparent border border-1 border-danger text-danger scale" onclick="restartGame()">Restart Game</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+  
+          
         </div>
       </div>
     </main>
