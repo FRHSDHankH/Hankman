@@ -18,6 +18,13 @@ let wrongGuesses = 0
 let guessedLetters = []
 const maxMistakes = 6
 
+let gameArea = document.getElementById('gameArea')
+let difficultyBox = document.getElementById('difficultyBox')
+let difficultySelection = document.getElementById('difficultySelection')
+let endText = document.getElementById('endText')
+let endContainer = document.getElementById('endContainer')
+let title = document.getElementById('title')
+
 //& Start Game Function (runs everything)
 function startGame(level) {
   //& Reset Game
@@ -31,16 +38,11 @@ function startGame(level) {
   updateUI()
 
   //& Show Game Area/Difficulty Display, hide selection button
-  let gameArea = document.getElementById('gameArea')
-  let difficultyBox = document.getElementById('difficultyBox')
-  let difficultySelection = document.getElementById('difficultySelection')
-
   gameArea.classList.remove('d-none')
   gameArea.classList.add('d-block')
-
   difficultyBox.classList.remove('d-none')
   difficultyBox.classList.add('d-block')
-
+  difficultySelection.classList.remove('d-block')
   difficultySelection.classList.add('d-none')
 
   //& Auto-Focus on input
@@ -103,7 +105,9 @@ function guessLetter() {
 function updateWrongGuess(guessedLetter) {
   wrongGuesses++
   document.getElementById('wrongLetters').textContent += `${guessedLetter}`
-  document.getElementById('imgChange').src = `imgs/image${6-wrongGuesses}.jpg`
+  document.getElementById('vidChange').src = `vids/video${6-wrongGuesses}.mp4`
+  let wrongSound = new Audio('wrong.mp3')
+  wrongSound.play()
 
   if (wrongGuesses === maxMistakes) {
     endGame(false)
@@ -127,14 +131,15 @@ function updateCorrectGuess(guessedLetter) {
   if (!displayedWord.includes('_')) {
     endGame(true)
   }
+
+  let rightSound = new Audio('right.mp3')
+  rightSound.play()
 }
 
 function endGame(won) {
-  let endText = document.getElementById('endText')
-  let endContainer = document.getElementById('endContainer')
-  document.getElementById('difficultyBox').classList.add('d-none')
-  document.getElementById('gameArea').classList.add('d-none')
-  document.getElementById('title').classList.add('d-none')
+  difficultyBox.classList.add('d-none')
+  gameArea.classList.add('d-none')
+  title.classList.add('d-none')
 
   if (won === true) {
     setTimeout(() => endText.textContent = `Congratulations you won! The word was "${selectedWord}".`, 100)
@@ -154,5 +159,26 @@ document.getElementById("letterInput").addEventListener("keydown", (event) => {
 });
 
 function restartGame() {
-  location.reload()
+  //& Reset Game
+  wrongGuesses = 0
+  guessedLetters = []
+  selectedWord = ''
+  displayedWord = ''
+  document.getElementById('wrongLetters').textContent = `Wrong Guesses: `
+
+  //& Back to home screen
+  gameArea.classList.remove('d-block')
+  gameArea.classList.add('d-none')
+  difficultyBox.classList.remove('d-block')
+  difficultyBox.classList.add('d-none')
+  difficultySelection.classList.remove('d-none')
+  difficultySelection.classList.add('d-block')
+  endContainer.classList.remove('d-block')
+  endContainer.classList.add('d-none')
+  title.classList.remove('d-none')
+  title.classList.add('d-block')
+  document.getElementById('vidChange').src = 'video6.mp4'
+
+  //& Reset end screen text
+  endText.textContent = ''
 }
