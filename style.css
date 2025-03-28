@@ -51,3 +51,10 @@
 #endText {
   height: 50vh;
 }
+
+.Custom {
+  background-color: transparent;
+  color: cyan;
+  border: .2vw double cyan;
+  border-radius: 2vw;
+}

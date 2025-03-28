@@ -1,5 +1,5 @@
 //& Word List
-const wordList = [
+let wordList = [
   'duel',
   'bash',
   'win',
@@ -24,6 +24,8 @@ let difficultySelection = document.getElementById('difficultySelection')
 let endText = document.getElementById('endText')
 let endContainer = document.getElementById('endContainer')
 let title = document.getElementById('title')
+let vidChange = document.getElementById('vidChange')
+let vid = document.getElementById('vid')
 
 //& Start Game Function (runs everything)
 function startGame(level) {
@@ -62,7 +64,7 @@ function getRandomWord(level) {
 //& Update Difficulty Display
 function updateDifficultyDisplay(level) {
   let difficultyBox = document.getElementById('difficultyBox')
-  difficultyBox.classList.remove('Easy', 'Medium', 'Hard')
+  difficultyBox.classList.remove('Easy', 'Medium', 'Hard', 'Custom')
   difficultyBox.classList.add(level)
   difficultyBox.textContent = `Difficulty: ${level}`
 }
@@ -102,10 +104,45 @@ function guessLetter() {
   document.getElementById('letterInput').focus() //& Refocus input field for next guess
 }
 
+function addWord(level) {
+  let wordInput = document.getElementById('wordInput') //& Get input field
+  let word = wordInput.value.toLowerCase()
+
+  //& Reset Game
+  wrongGuesses = 0
+  guessedLetters = []
+
+  selectedWord = word
+  displayedWord = '_'.repeat(selectedWord.length)
+  
+  updateDifficultyDisplay(level)
+  updateUI()
+
+  //& Show Game Area/Difficulty Display, hide selection button
+  gameArea.classList.remove('d-none')
+  gameArea.classList.add('d-block')
+  difficultyBox.classList.remove('d-none')
+  difficultyBox.classList.add('d-block')
+  difficultySelection.classList.remove('d-block')
+  difficultySelection.classList.add('d-none')
+
+  //& Auto-Focus on input
+  document.getElementById('letterInput').focus()
+
+  wordInput.value = '' //& Clear input field
+  document.getElementById('wordInput').focus() //& Refocus input field for next guess
+}
+
 function updateWrongGuess(guessedLetter) {
+  if (wrongGuesses === 0) {
+    document.getElementById('wrongLetters').textContent += `${guessedLetter}`
+  } else {
+    document.getElementById('wrongLetters').textContent += `, ${guessedLetter}`
+  }
   wrongGuesses++
-  document.getElementById('wrongLetters').textContent += `${guessedLetter}`
-  document.getElementById('vidChange').src = `vids/video${6-wrongGuesses}.mp4`
+  vidChange.src = `vids/video${6-wrongGuesses}.mp4`
+  vid.load()
+  vid.play()
   let wrongSound = new Audio('wrong.mp3')
   wrongSound.play()
 
@@ -137,17 +174,18 @@ function updateCorrectGuess(guessedLetter) {
 }
 
 function endGame(won) {
-  difficultyBox.classList.add('d-none')
-  gameArea.classList.add('d-none')
-  title.classList.add('d-none')
-
-  if (won === true) {
-    setTimeout(() => endText.textContent = `Congratulations you won! The word was "${selectedWord}".`, 100)
-    setTimeout(() => endContainer.classList.remove('d-none'), 100)
-  } else {
-    setTimeout(() => endText.textContent = `Sorry you died... the word was "${selectedWord}" you idiot!`, 100)
-    setTimeout(() => endContainer.classList.remove('d-none'), 100)
-  }
+  setTimeout(() => {
+    difficultyBox.classList.add('d-none')
+    gameArea.classList.add('d-none')
+    title.classList.add('d-none')
+    if (won === true) {
+      setTimeout(() => endText.textContent = `Congratulations you won! The word was "${selectedWord}".`, 100)
+      setTimeout(() => endContainer.classList.remove('d-none'), 100)
+    } else {
+      setTimeout(() => endText.textContent = `Sorry you died... the word was "${selectedWord}" you idiot!`, 100)
+      setTimeout(() => endContainer.classList.remove('d-none'), 100)
+    }
+  }, 4000)
 }
 
 //& Add an event listener to task input to check if enter key is pressed
@@ -155,6 +193,14 @@ document.getElementById("letterInput").addEventListener("keydown", (event) => {
   //& Checks if enter key is pressed
   if (event.key === "Enter") {
     guessLetter()
+  }
+});
+
+//& Add an event listener to add word to check if enter key is pressed
+document.getElementById("wordInput").addEventListener("keydown", (event) => {
+  //& Checks if enter key is pressed
+  if (event.key === "Enter") {
+    addWord('Custom')
   }
 });
 
@@ -177,7 +223,8 @@ function restartGame() {
   endContainer.classList.add('d-none')
   title.classList.remove('d-none')
   title.classList.add('d-block')
-  document.getElementById('vidChange').src = 'video6.mp4'
+  document.getElementById('vidChange').src = 'vids/video6.mp4'
+  vid.load()
 
   //& Reset end screen text
   endText.textContent = ''

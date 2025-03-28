@@ -46,6 +46,19 @@
                   <button class="btn btn-transparent border border-1 border-danger difficulty-btn scale text-danger m-3" onclick="startGame('Hard')">Hard</button>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-12">
+                  <p class="display-5 my-2 text-white">Add a custom word:</p>
+                </div>
+              </div>
+              <div class="my-2 row d-flex align-items-center justify-content-center">
+                <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-lg-end justify-content-center">
+                  <input type="text" id="wordInput" placeholder="Enter a Word" class="text-center mx-2 form-control d-inline-block border border-1 border-white bg-transparent text-white w-25">
+                </div>
+                <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-lg-start justify-content-center">
+                  <button id="addBtn" class="mx-2 btn btn-transparent border border-1 border-warning scale text-warning w-25" onclick="addWord('Custom')">Add</button>
+                </div>
+              </div>
             </div>
           </div>
   
@@ -60,21 +73,15 @@
               <div id="gameArea" class="my-2 d-none">
                 <p id="wordDisplay" class="display-4 my-2 text-white"></p>
                 <div class="my-2 row d-flex align-items-center justify-content-center">
-                  <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-end d-none d-lg-flex d-xl-flex">
+                  <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-lg-end justify-content-center">
                     <input type="text" id="letterInput" maxlength="1" placeholder="Enter a Letter" class="text-center mx-2 form-control d-inline-block border border-1 border-white bg-transparent text-white w-25">
                   </div>
-                  <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-start d-none d-lg-flex d-xl-flex">
-                    <button id="guessBtn" class="mx-2 btn btn-transparent border border-1 border-warning scale text-warning w-25" onclick="guessLetter()">Guess</button>
-                  </div>
-                  <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-center d-lg-none d-xl-none">
-                    <input type="text" id="letterInput" maxlength="1" placeholder="Enter a Letter" class="text-center mx-2 form-control d-inline-block border border-1 border-white bg-transparent text-white w-25">
-                  </div>
-                  <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-center d-lg-none d-xl-none">
+                  <div class="col-lg-6 col-sm-12 my-3 d-flex align-items-center justify-content-lg-start justify-content-center">
                     <button id="guessBtn" class="mx-2 btn btn-transparent border border-1 border-warning scale text-warning w-25" onclick="guessLetter()">Guess</button>
                   </div>
                 </div>
                 <p id="wrongLetters" class="fw-bold text-danger my-2">Wrong Guesses: </p>
-                <video autoplay>
+                <video id="vid" class="h-auto w-50">
                   <source src="vids/video6.mp4" id="vidChange" type="video/mp4">
                 </video>
                 <div class="my-2">
