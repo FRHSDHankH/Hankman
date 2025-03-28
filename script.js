@@ -174,18 +174,21 @@ function updateCorrectGuess(guessedLetter) {
 }
 
 function endGame(won) {
-  setTimeout(() => {
-    difficultyBox.classList.add('d-none')
-    gameArea.classList.add('d-none')
-    title.classList.add('d-none')
     if (won === true) {
+      difficultyBox.classList.add('d-none')
+      gameArea.classList.add('d-none')
+      title.classList.add('d-none')
       setTimeout(() => endText.textContent = `Congratulations you won! The word was "${selectedWord}".`, 100)
       setTimeout(() => endContainer.classList.remove('d-none'), 100)
     } else {
-      setTimeout(() => endText.textContent = `Sorry you died... the word was "${selectedWord}" you idiot!`, 100)
-      setTimeout(() => endContainer.classList.remove('d-none'), 100)
+      setTimeout(() => {
+        difficultyBox.classList.add('d-none')
+        gameArea.classList.add('d-none')
+        title.classList.add('d-none')
+        setTimeout(() => endText.textContent = `Sorry you died... the word was "${selectedWord}" you idiot!`, 100)
+        setTimeout(() => endContainer.classList.remove('d-none'), 100)
+      }, 4000)
     }
-  }, 4000)
 }
 
 //& Add an event listener to task input to check if enter key is pressed
