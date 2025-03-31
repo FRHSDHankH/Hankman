@@ -17,9 +17,10 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/thk0nyx.css">
   </head>
 
-  <body class="bg-333">
+  <body class="bg-333 overflow-hidden">
     <main class="d-flex align-items-center justify-content-center size">
       <div class="container-fluid d-block">
         <div class="container text-center">
@@ -92,19 +93,17 @@
           </div>
         </div>
       </div>
-      <div class="container-fluid position-absolute z-3 size d-flex align-items-center justify-content-center d-none" id="endContainer">
-        <div class="container d-block">
-          <div class="row">
-            <div class="col-12 border border-3 border-white rounded-4 text-center">
-              <div class="row my-5">
-                <div class="col-12">
-                  <div class="bg-333 text-white display-1 h-75" id="endText"></div>
-                </div>
+      <div class="container-fluid position-absolute z-3 fullSize d-none text-center" id="endContainer">
+        <div class="d-flex align-items-center justify-content-center fullSize">
+          <div class="d-block">
+            <div class="row my-5">
+              <div class="col-12">
+                <div class="d-flex align-items-center justify-content-center" id="endText"></div>
               </div>
-              <div class="row my-5">
-                <div class="col-12">
-                  <button id="restartBtn" class="btn btn-transparent border border-1 border-danger text-danger scale my-2" onclick="restartGame()">Restart Game</button>
-                </div>
+            </div>
+            <div class="row my-5">
+              <div class="col-12 d-flex align-items-center justify-content-center my-5">
+                <button id="restartBtn" class="btn btn-transparent border border-1 border-danger text-danger scale my-5 w-25 h-50" onclick="restartGame()">Restart Game</button>
               </div>
             </div>
           </div>

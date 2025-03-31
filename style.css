@@ -48,8 +48,21 @@
   width: 100vw;
 }
 
+.fullSize {
+  height: 110vh;
+  width: 100vw;
+}
+
 #endText {
   height: 50vh;
+}
+
+#endContainer {
+  opacity: 1;
+  transition: 3s opacity;
+  @starting-style {
+    opacity: 0;
+  }
 }
 
 .Custom {
@@ -57,4 +70,18 @@
   color: cyan;
   border: .2vw double cyan;
   border-radius: 2vw;
+}
+
+.font {
+  font-family: "shlop-shloppy", sans-serif;
+  font-size: 7rem;
+  background-color: black;
+  color: red;
+}
+
+.font2 {
+  font-family: "brevia", sans-serif;
+  font-size: 7rem;
+  background-color: #333;
+  color: white;
 }

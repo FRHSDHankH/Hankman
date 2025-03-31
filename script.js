@@ -174,21 +174,32 @@ function updateCorrectGuess(guessedLetter) {
 }
 
 function endGame(won) {
-    if (won === true) {
+  if (won === true) {
+    difficultyBox.classList.add('d-none')
+    gameArea.classList.add('d-none')
+    title.classList.add('d-none')
+    setTimeout(() => endText.textContent = `Congratulations you won! The word was "${selectedWord}".`, 100)
+    setTimeout(() => endContainer.classList.remove('d-none'), 100)
+    endContainer.classList.add('font2')
+
+    setTimeout(() => {
+      new Audio('right.mp3').play()
+    }, 300)
+    
+    setTimeout(() => {
+      new Audio('right.mp3').play()
+    }, 600)
+  } else {
+    endContainer.classList.add('font')
+    setTimeout(() => {
+      new Audio('womp.mp3').play()
       difficultyBox.classList.add('d-none')
       gameArea.classList.add('d-none')
       title.classList.add('d-none')
-      setTimeout(() => endText.textContent = `Congratulations you won! The word was "${selectedWord}".`, 100)
+      setTimeout(() => endText.textContent = `You Died. The word was ${selectedWord}.`, 100)
       setTimeout(() => endContainer.classList.remove('d-none'), 100)
-    } else {
-      setTimeout(() => {
-        difficultyBox.classList.add('d-none')
-        gameArea.classList.add('d-none')
-        title.classList.add('d-none')
-        setTimeout(() => endText.textContent = `Sorry you died... the word was "${selectedWord}" you idiot!`, 100)
-        setTimeout(() => endContainer.classList.remove('d-none'), 100)
-      }, 4000)
-    }
+    }, 4000)
+  }
 }
 
 //& Add an event listener to task input to check if enter key is pressed
@@ -224,6 +235,8 @@ function restartGame() {
   difficultySelection.classList.add('d-block')
   endContainer.classList.remove('d-block')
   endContainer.classList.add('d-none')
+  endContainer.classList.remove('font')
+  endContainer.classList.remove('font2')
   title.classList.remove('d-none')
   title.classList.add('d-block')
   document.getElementById('vidChange').src = 'vids/video6.mp4'
