@@ -118,6 +118,12 @@ function addWord(level) {
   updateDifficultyDisplay(level)
   updateUI()
 
+  if(!word.match(/^[a-z]+$/)) {
+    alert('Please enter a valid letter (a-z)!') //& Alert user if invalid input
+    wordInput.value = '' //& Clear input field
+    return //& Exit function
+  }
+
   //& Show Game Area/Difficulty Display, hide selection button
   gameArea.classList.remove('d-none')
   gameArea.classList.add('d-block')
