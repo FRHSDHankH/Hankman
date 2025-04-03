@@ -119,7 +119,7 @@ function addWord(level) {
   updateUI()
 
   if(!word.match(/^[a-z]+$/)) {
-    alert('Please enter a valid letter (a-z)!') //& Alert user if invalid input
+    alert('Please enter a valid word!') //& Alert user if invalid input
     wordInput.value = '' //& Clear input field
     return //& Exit function
   }
